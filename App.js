@@ -56,8 +56,8 @@ export default function App(){
 
 function About() {
     return (
-      <Tab.Navigator initialRouteName='About'>
-        <Tab.Screen name="About" component={Home} />
+      <Tab.Navigator initialRouteName='File Import'>
+        <Tab.Screen name="File Import" component={Home} />
         <Tab.Screen name="View" component={ViewScreen} />
       </Tab.Navigator>
     );
@@ -70,7 +70,7 @@ function About() {
         {userAuthenticated ? (
             <Stack.Navigator>
           <Stack.Screen
-            name="About"
+            name="File Import"
             component={About}
             options={{ headerShown: false }}
           />
