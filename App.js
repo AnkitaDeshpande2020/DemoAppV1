@@ -8,6 +8,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import ViewScreen from './Screens/ViewScreen';
 // react-native-vector-icons/Ionicons otherwise.
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import Product from './Screens/Product';
+import Header from './Screens/redux/Header';
 const Stack = createStackNavigator();
 
 const Tab = createBottomTabNavigator();
@@ -59,6 +61,7 @@ function About() {
       <Tab.Navigator initialRouteName='About'>
         <Tab.Screen name="About" component={Home} />
         <Tab.Screen name="View" component={ViewScreen} />
+        <Tab.Screen name="Product" component={Product} options={{headerShown: false}}/>
       </Tab.Navigator>
     );
   }
@@ -66,7 +69,11 @@ function About() {
  export default function App() {
     const [userAuthenticated, setuserAuthenticated] = useState(false);
     return (
-        <NavigationContainer>
+      <>
+      {userAuthenticated ? 
+      (<Header></Header>):''
+      }
+      <NavigationContainer>
         {userAuthenticated ? (
             <Stack.Navigator>
           <Stack.Screen
@@ -79,5 +86,6 @@ function About() {
           <AuthStack setuserAuthenticated={setuserAuthenticated} />
         )}
       </NavigationContainer>
+      </>
     );
   }
